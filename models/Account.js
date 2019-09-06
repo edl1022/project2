@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-  var Horoscope = sequelize.define("Horoscope", {
+  var Account = sequelize.define("Account", {
     username:
     { type: DataTypes.STRING,
       allowNull: false
@@ -21,5 +21,5 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     }
   });
-  return Horoscope;
+  return Account;
 };

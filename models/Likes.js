@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    var Horoscope = sequelize.define("Horoscope", {
+    var Likes = sequelize.define("Likes", {
       horoscope:
       { type: DataTypes.STRING,
         allowNull: false
@@ -10,10 +10,10 @@ module.exports = function(sequelize, DataTypes) {
       },
       userID: 
       {
-          type: sequelize.INTEGER,
-          references: "Account",
-          referencesKey: "id"
+          type: DataTypes.INTEGER,
+          model: "Account",
+          key: "id"
       }
     });
-    return Horoscope;
+    return Likes;
   };

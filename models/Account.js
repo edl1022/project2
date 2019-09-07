@@ -16,8 +16,8 @@ module.exports = function(sequelize, DataTypes) {
     { type: DataTypes.STRING,
       allowNull: false
     },
-    birthday:
-    { type: DataTypes.DATE,
+    sign:
+    { type: DataTypes.STRING,
       allowNull: false
     }
   });

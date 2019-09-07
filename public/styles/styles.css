@@ -1,3 +1,20 @@
-.list-group-item {
-  line-height: 2.5;
+#header-main {
+text-align: center;
+font-style: italic
+}
+
+body {
+  background-image: url("../assets/background.jpg");
+  background-size: 1024px 800px;
+}
+
+#card-saved {
+  height: 600px;
+  margin: 20px;
+  padding: 10px;
+}
+
+#today-card {
+  margin: 20px;
+  padding: 10px;
 }

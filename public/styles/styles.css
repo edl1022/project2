@@ -1,3 +1,7 @@
+/* .container {
+    max-width: 1024px;
+} */
+
 #header-main {
     text-align: center;
     font-style: italic
@@ -10,15 +14,25 @@ body {
 
 #card-saved {
     height: 600px;
-    margin: 20px;
+    margin: 20px 20px 20px 0px;
     padding: 10px;
+    opacity: .75;
 }
 
+.card-title {
+    border-bottom: 1px solid black
+}
 #today-card {
     margin: 20px;
     padding: 10px;
+    opacity: .75;
 }
-
+#logout-link {
+    color: black
+}
+#logout-link:hover {
+    color: gray
+}
 form.signup,
 form.login {
     margin-top: 50px;

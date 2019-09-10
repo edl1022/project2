@@ -37,8 +37,16 @@ $(document).ready(function() {
     //       });
     //     }
     //   };
-
+    
     function horoscope() {
+        var sign ;
+        $.ajax({
+            type: "GET",
+            url: "/api/getsign"
+        }).then(function(data){
+            // console log getting sign
+            console.log("Astrological Sign: " + data)
+        })
         $.ajax({
             // headers: {
             //     "Content-Type": "application/json"
@@ -53,14 +61,21 @@ $(document).ready(function() {
             var newDiv = $("<div>")
             var newText = $("<p>")
 
+            var newDate = $("<p>")
+            
             newText.text(parseData.horoscope)
+            newDate.text(parseData.date)
             newDiv.addClass("today-horoscope")
             newDiv.append(newText)
+            newDiv.append(newDate)
             horoscopeDisplay.append(newDiv)
 
         })
     }
 
+    $("#heart").on("click", function(){
+        console.log("Success!")
+    })
 
 
 

@@ -1,45 +1,59 @@
 <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-            </div>
-        </div>
-    </nav>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 col-md-offset-3">
-                <h2>Sign Up Form</h2>
-                <form class="signup">
-                    <div class="form-group">
-                        <label for="exampleInputName1">Name</label>
-                        <input type="name" class="form-control" id="name-input" placeholder="Name">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputSign1">Astrological Sign</label>
-                        <input type="name" class="form-control" id="sign-input" placeholder="sign">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="email-input" placeholder="Email">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="password-input" placeholder="Password">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword2">Confirm Password</label>
-                        <input type="password" class="form-control" id="password2-input" placeholder="Password">
-                    </div>
-                    <div style="display: none" id="alert" class="alert alert-danger" role="alert">
-                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                        <span class="sr-only">Error:</span> <span class="msg"></span>
-                    </div>
-                    <button type="submit" class="btn btn-default">Sign Up</button>
-                </form>
-                <br />
-                <p>Or log in <a href="/login">here</a></p>
-            </div>
+    <div class="container-fluid">
+        <div class="navbar-header">
         </div>
     </div>
-
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <h2>Sign Up Form</h2>
+            <form class="signup">
+                <div class="form-group">
+                    <label for="exampleInputName1">Name</label>
+                    <input type="name" class="form-control" id="name-input" placeholder="Name">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Astrological Sign</label>
+                    <select class="form-control" id="signs">
+                        <option>Aquarius (January 20 - February 18)</option>
+                        <option>Pisces (February 19 - March 20)</option>
+                        <option>Aries (March 21 - April 19)</option>
+                        <option>Taurus (April 20 - May 20)</option>
+                        <option>Gemini (May 21 - June 20)</option>
+                        <option>Cancer (June 21 - July 22)</option>
+                        <option>Leo (July 23 - August 22)</option>
+                        <option>Virgo (August 23 - September 22)</option>
+                        <option>Libra (September 23 - October 22)</option>
+                        <option>Scorpio (October 23 - November 21)</option>
+                        <option>Sagittarius (November 22 - December 21)</option>
+                        <option>Capricorn (December 22 - January 19)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" class="form-control" id="email-input" placeholder="Email">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="password-input" placeholder="Password">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword2">Confirm Password</label>
+                    <input type="password" class="form-control" id="password2-input" placeholder="Password">
+                </div>
+                <div style="display: none" id="alert" class="alert alert-danger" role="alert">
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    <span class="sr-only">Error:</span> <span class="msg"></span>
+                </div>
+                <button type="submit" class="btn btn-default">Sign Up</button>
+            </form>
+            <br />
+            <p>Or log in <a href="./login.handlebars">here</a></p>
+        </div>
+    </div>
+</div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="js/signup.js"></script>
+
+

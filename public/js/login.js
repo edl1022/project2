@@ -18,8 +18,8 @@ $(document).ready(function() {
 
         // If we have an email and password we run the loginUser function and clear the form
         loginUser(userData.email, userData.password);
-        emailInput.val("");
-        passwordInput.val("");
+        // emailInput.val("");
+        // passwordInput.val("");
     });
 
     // loginUser does a post to our "api/login" route and if successful, redirects us the the members page
@@ -28,7 +28,6 @@ $(document).ready(function() {
                 email: email,
                 password: password
             })
-            //DOES THE BIRTHDAY AND NAME DATA HAVE TO BE RETURNED HERE? HOW?
             .then(function() {
                 window.location.replace("/members");
                 // If there's an error, log the error

@@ -54,14 +54,13 @@ module.exports = function(app) {
         }
     });
 
-    app.get("/api/getsign", function (req,res) {
-        console.log("Looking up User "+req.user)
-        db.User.findOne({
-            where: {email: req.user.email}
-        }).then(function(data){
-            console.log(data)
-            res.json(data)
-        })
-        
-    })
+    // app.get("/api/getsign", function (req,res) {
+    //     console.log("Looking up User "+req.user)
+    //     db.User.findOne({
+    //         where: {email: req.user.email}
+    //     }).then(function(data){
+    //         console.log(data)
+    //         res.json(data)
+    //     })
+    // })
 };

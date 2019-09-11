@@ -1,8 +1,8 @@
 {
     "development": {
         "username": "root",
-        "password": "password",
-        "database": "exampledb",
+        "password": "H2A32B3AE51F13B45",
+        "database": "horoscopedb",
         "host": "127.0.0.1",
         "dialect": "mysql"
     },

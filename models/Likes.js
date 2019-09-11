@@ -4,15 +4,16 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false
         },
-        date: {
-            type: DataTypes.DATE,
-            allowNull: false
-        },
         userID: {
             type: DataTypes.INTEGER,
-            model: "Users",
-            key: "id"
+            allowNull: false
         }
+        // date: {
+        //     type: DataTypes.STRING,
+        //     allowNull: true
+        // } 
     });
+    console.log(Likes)
     return Likes;
 };
+

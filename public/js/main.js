@@ -78,7 +78,16 @@ $(document).ready(function () {
 
     $("#heart").on("click", function () {
         console.log("Success!")
+        saveHoroscope('this is a test horoscope')
     })
+
+    function saveHoroscope (horoscope) {
+        var userID = localStorage.getItem('userID')
+        $.post("/api/horoscope", {
+            userID,
+            horoscope
+        }).then(horoscope => console.log(horoscope))
+    }
 
 
 

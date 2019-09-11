@@ -36,6 +36,8 @@ module.exports = function(sequelize, DataTypes) {
         user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
     });
 
+    // User.hasMany(Likes, {as: "horoscope"})
+   
 
     return User;
 };

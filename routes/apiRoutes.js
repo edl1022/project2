@@ -7,6 +7,7 @@ module.exports = function (app) {
     // If the user has valid login credentials, send them to the members page.
     // Otherwise the user will be sent an error
     app.post("/api/login", passport.authenticate("local"), function (req, res) {
+        console.log(req.user)
         res.json(req.user);
     });
 
@@ -67,5 +68,19 @@ module.exports = function (app) {
         }else {
             console.log("HIT API GETSIGN NO USER")
             res.end()}
+    })
+
+    app.post("/api/horoscope", function (req, res) {
+        console.log('hit route to persist horoscope: ', req.body)
+        try {
+            db.Likes.create({
+                horoscope: req.body.horoscope,
+                userID: req.body.userID
+            }).then((horoscope) => {
+                res.json(horoscope)
+            })
+        } catch (err) {
+            res.send('fail')
+        }
     })
 };

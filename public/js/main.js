@@ -39,28 +39,46 @@ $(document).ready(function () {
     //   };
 
     function horoscope() {
+        var sign;
         $.ajax({
-            // headers: {
-            //     "Content-Type": "application/json"
-            // },
             type: "GET",
-            url: "http://sandipbgt.com/theastrologer/api/horoscope/capricorn/today/"
-            // data: console.log(JSON.stringify(data))
+            url: "/api/getsign"
         }).then(function (data) {
-            var parseData = JSON.parse(data)
-            console.log(parseData.horoscope)
-            var horoscopeDisplay = $("#today")
-            var newDiv = $("<div>")
-            var newText = $("<p>")
-            
-            newText.text(parseData.horoscope)
-            newDiv.addClass("today-horoscope")
-            newDiv.append(newText)
-            horoscopeDisplay.append(newDiv)
+            // console log getting sign
+            console.log("Astrological Sign: " + JSON.stringify(data.sign))
+            sign = data.sign.split(" ")
+            sign = sign[0].toLowerCase()
+            console.log(sign)
+        }).then(function(){
+            $.ajax({
+                // headers: {
+                //     "Content-Type": "application/json"
+                // },
+                type: "GET",
+                url: "http://sandipbgt.com/theastrologer/api/horoscope/" + sign + "/today/"
+                // data: console.log(JSON.stringify(data))
+            }).then(function (data) {
+                var parseData = JSON.parse(data)
+                var horoscopeDisplay = $("#today")
+                var newDiv = $("<div>")
+                var newText = $("<p>")
 
+                var newDate = $("<p>")
+
+                newText.text(parseData.horoscope)
+                newDate.text(parseData.date)
+                newDiv.addClass("today-horoscope")
+                newDiv.append(newText)
+                newDiv.append(newDate)
+                horoscopeDisplay.append(newDiv)
+
+            })
         })
     }
 
+    $("#heart").on("click", function () {
+        console.log("Success!")
+    })
 
 
 

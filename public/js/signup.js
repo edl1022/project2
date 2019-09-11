@@ -3,10 +3,13 @@ $(document).ready(function() {
     var signUpForm = $("form.signup");
 
     var nameInput = $("input#name-input");
-    var signInput = $("input#sign-input");
+    var signInput = $("select option:selected");
     var emailInput = $("input#email-input");
     var passwordInput = $("input#password-input");
     var password2Input = $("input#password2-input");
+
+    console.log(signInput);
+    console.log(typeof(signInput));
 
     console.log("sign up form");
     console.log(signUpForm);

@@ -56,7 +56,6 @@ $(document).ready(function() {
                 // data: console.log(JSON.stringify(data))
         }).then(function(data) {
             var parseData = JSON.parse(data)
-            console.log(parseData.horoscope)
             var horoscopeDisplay = $("#today")
             var newDiv = $("<div>")
             var newText = $("<p>")

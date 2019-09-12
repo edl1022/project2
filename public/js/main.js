@@ -44,12 +44,9 @@ $(document).ready(function () {
             type: "GET",
             url: "/api/getsign"
         }).then(function (data) {
-            // console log getting sign
-            console.log("Astrological Sign: " + JSON.stringify(data.sign))
             sign = data.sign.split(" ")
             sign = sign[0].toLowerCase()
-            console.log(sign)
-        }).then(function(){
+        }).then(function () {
             $.ajax({
                 // headers: {
                 //     "Content-Type": "application/json"
@@ -66,8 +63,8 @@ $(document).ready(function () {
                 var newDate = $("<p>")
 
                 newText.text(parseData.horoscope)
+                newText.addClass("today-horoscope")
                 newDate.text(parseData.date)
-                newDiv.addClass("today-horoscope")
                 newDiv.append(newText)
                 newDiv.append(newDate)
                 horoscopeDisplay.append(newDiv)
@@ -77,20 +74,26 @@ $(document).ready(function () {
     }
 
     $("#heart").on("click", function () {
-        console.log("Success!")
-        saveHoroscope('this is a test horoscope')
+        console.log("Saving: ", $(".today-horoscope").text())
+        saveHoroscope($(".today-horoscope").text())
+    
     })
 
-    function saveHoroscope (horoscope) {
+    function saveHoroscope(horoscope) {
         var userID = localStorage.getItem('userID')
+        console.log('in api call: ', horoscope)
         $.post("/api/horoscope", {
             userID,
             horoscope
-        }).then(horoscope => console.log(horoscope))
+        }).then(response => {
+            console.log(response)
+            var savedHoroscope = $("<p>")
+            savedHoroscope.text(horoscope)
+            $('#saved-scopes').append(savedHoroscope)
+        }).catch((err) => {
+            console.log(err)
+        })
     }
 
-
-
     horoscope();
-
 })

@@ -65,22 +65,19 @@ module.exports = function (app) {
                 console.log(data)
                 res.json(data)
             })
-        }else {
+        } else {
             console.log("HIT API GETSIGN NO USER")
-            res.end()}
+            res.end()
+        }
     })
 
     app.post("/api/horoscope", function (req, res) {
         console.log('hit route to persist horoscope: ', req.body)
-        try {
-            db.Likes.create({
-                horoscope: req.body.horoscope,
-                userID: req.body.userID
-            }).then((horoscope) => {
-                res.json(horoscope)
-            })
-        } catch (err) {
-            res.send('fail')
-        }
+        db.Likes.create({
+            horoscope: req.body.horoscope,
+            userID: req.body.userID
+        }).then((horoscope) => {
+            res.json(horoscope)
+        })
     })
 };

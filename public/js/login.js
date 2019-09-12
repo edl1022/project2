@@ -13,6 +13,7 @@ $(document).ready(function() {
         };
 
         if (!userData.email || !userData.password) {
+            alert("username and/or password incorrect");
             return;
         }
 
@@ -39,7 +40,7 @@ $(document).ready(function() {
             });
     }
 
-    function saveHoroscope (horoscope) {
+    function saveHoroscope(horoscope) {
         var userID = localStorage.getItem('userID')
         $.post("/api/horoscope", {
             userID,

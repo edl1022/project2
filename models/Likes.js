@@ -1,7 +1,7 @@
 module.exports = function(sequelize, DataTypes) {
-    var Likes = sequelize.define("Likes", {
+    var Likes = sequelize.define("hLikes", {
         horoscope: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(6383),
             allowNull: false
         },
         userID: {
@@ -16,4 +16,3 @@ module.exports = function(sequelize, DataTypes) {
     console.log(Likes)
     return Likes;
 };
-

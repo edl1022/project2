@@ -75,7 +75,7 @@ module.exports = function(app) {
     app.post("/api/horoscope", function(req, res) {
         console.log('hit route to persist horoscope: ', req.body)
         try {
-            db.Likes.create({
+            db.hLikes.create({
                 horoscope: req.body.horoscope,
                 userID: req.body.userID
             }).then((horoscope) => {

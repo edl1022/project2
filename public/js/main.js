@@ -60,26 +60,31 @@ $(document).ready(function() {
             }).then(function(data) {
                 var parseData = JSON.parse(data)
                 var horoscopeDisplay = $("#today")
+                console.log(horoscopeDisplay);
+                console.log(parseData);
+                console.log(parseData.date);
+                console.log(parseData.horoscope);
                 var newDiv = $("<div>")
                 var newText = $("<p>")
 
                 // var newDate = $("<p>")
 
                 newText.text(parseData.horoscope)
-                    // newDate.text(parseData.date)
+
+                // newDate.text(parseData.date)
                 newDiv.addClass("today-horoscope")
                 newDiv.append(newText)
                     // newDiv.append(newDate)
                 horoscopeDisplay.append(newDiv)
-
+                $("#heart").on("click", function() {
+                    console.log("Success!")
+                    saveHoroscope(parseData.horoscope);
+                })
             })
         })
     }
 
-    $("#heart").on("click", function() {
-        console.log("Success!")
-        saveHoroscope('this is a test horoscope')
-    })
+
 
     function saveHoroscope(horoscope) {
         var userID = localStorage.getItem('userID')

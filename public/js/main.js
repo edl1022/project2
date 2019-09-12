@@ -1,42 +1,18 @@
 // import { get } from "https"
 
-$(document).ready(function() {
-    //   // The API object contains methods for each kind of request we'll make
-    //   var sign = $("signs").val().trim()
-    //   var API = {
-    //     horoscopetoday: function(today) {
-    //       return $.ajax({
-    //         headers: {
-    //           "Content-Type": "application/json"
-    //         },
-    //         type: "GET",
-    //         url: "http://sandipbgt.com/theastrologer/api/" + sign + "/today/",
-    //         data: console.log(JSON.stringify(today))
-    //       });
-    //     },
+$(document).ready(function () {
 
-    //     horoscopetomorrow: function(tomorrow) {
-    //       return $.ajax({
-    //         headers: {
-    //           "Content-Type": "application/json"
-    //         },
-    //         type: "GET",
-    //         url: "http://sandipbgt.com/theastrologer/api/" + sign + "/tomorrow/",
-    //         data: console.log(JSON.stringify(tomorrow))
-    //       });
-    //     },
+    $.ajax({
+        url: "/api/favorites",
+        type: "POST",
+        data: localStorage.getItem('userID')
+    }).then(function (response) {
+        var horoscopes = response.data.horoscopes
+        for (var i = 0; i < horoscopes.length; i++) {
+            makeHoroscopes(horoscopes[i])
+        }
+    })
 
-    //     horoscopeyesterday: function(yesterday) {
-    //       return $.ajax({
-    //         headers: {
-    //           "Content-Type": "application/json"
-    //         },
-    //         type: "GET",
-    //         url: "http://sandipbgt.com/theastrologer/api/" + sign + "/yesterday/",
-    //         data: console.log(JSON.stringify(yesterday))
-    //       });
-    //     }
-    //   };
 
     function horoscope() {
         var sign;
@@ -53,20 +29,19 @@ $(document).ready(function() {
                 // },
                 type: "GET",
                 url: "http://sandipbgt.com/theastrologer/api/horoscope/" + sign + "/today/"
-                    // data: console.log(JSON.stringify(data))
-            }).then(function(data) {
+                // data: console.log(JSON.stringify(data))
+            }).then(function (data) {
                 var parseData = JSON.parse(data)
                 var horoscopeDisplay = $("#today")
                 var newDiv = $("<div>")
                 var newText = $("<p>")
-
-                // var newDate = $("<p>")
+                var newDate = $("<p>")
 
                 newText.text(parseData.horoscope)
                 newText.addClass("today-horoscope")
                 newDate.text(parseData.date)
                 newDiv.append(newText)
-                    // newDiv.append(newDate)
+                // newDiv.append(newDate)
                 horoscopeDisplay.append(newDiv)
 
             })
@@ -76,7 +51,7 @@ $(document).ready(function() {
     $("#heart").on("click", function () {
         console.log("Saving: ", $(".today-horoscope").text())
         saveHoroscope($(".today-horoscope").text())
-   
+
     })
 
     function saveHoroscope(horoscope) {
@@ -87,12 +62,16 @@ $(document).ready(function() {
             horoscope
         }).then(response => {
             console.log(response)
-            var savedHoroscope = $("<p>")
-            savedHoroscope.text(horoscope)
-            $('#saved-scopes').append(savedHoroscope)
+            makeHoroscopes(horoscope)
         }).catch((err) => {
             console.log(err)
         })
+    }
+
+    function makeHoroscopes(horoscope) {
+        var savedHoroscope = $("<p>")
+        savedHoroscope.text(horoscope)
+        $('#saved-scopes').append(savedHoroscope)
     }
 
     horoscope();

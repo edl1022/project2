@@ -81,4 +81,12 @@ module.exports = function(app) {
             res.json(horoscope)
         })
     })
+
+    app.post("/api/favorites", function(req, res) {
+        db.Likes.findAll({
+            where: { userID: req.body.userID }
+        }).then((response) => {
+            res.json(response)
+        })
+    })
 };

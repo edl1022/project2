@@ -1,6 +1,6 @@
 // import { get } from "https"
 
-$(document).ready(function () {
+$(document).ready(function() {
     //   // The API object contains methods for each kind of request we'll make
     //   var sign = $("signs").val().trim()
     //   var API = {
@@ -53,20 +53,20 @@ $(document).ready(function () {
                 // },
                 type: "GET",
                 url: "http://sandipbgt.com/theastrologer/api/horoscope/" + sign + "/today/"
-                // data: console.log(JSON.stringify(data))
-            }).then(function (data) {
+                    // data: console.log(JSON.stringify(data))
+            }).then(function(data) {
                 var parseData = JSON.parse(data)
                 var horoscopeDisplay = $("#today")
                 var newDiv = $("<div>")
                 var newText = $("<p>")
 
-                var newDate = $("<p>")
+                // var newDate = $("<p>")
 
                 newText.text(parseData.horoscope)
                 newText.addClass("today-horoscope")
                 newDate.text(parseData.date)
                 newDiv.append(newText)
-                newDiv.append(newDate)
+                    // newDiv.append(newDate)
                 horoscopeDisplay.append(newDiv)
 
             })
@@ -76,7 +76,7 @@ $(document).ready(function () {
     $("#heart").on("click", function () {
         console.log("Saving: ", $(".today-horoscope").text())
         saveHoroscope($(".today-horoscope").text())
-    
+   
     })
 
     function saveHoroscope(horoscope) {

@@ -69,9 +69,11 @@ $(document).ready(function () {
     }
 
     function makeHoroscopes(horoscope) {
-        var savedHoroscope = $("<p>")
+        var savedList = $("<ul>")
+        var savedHoroscope = $("<li>")
         savedHoroscope.text(horoscope)
-        $('#saved-scopes').append(savedHoroscope)
+        savedList.append(savedHoroscope)
+        $('#saved-scopes').append(savedList)
     }
 
     horoscope();

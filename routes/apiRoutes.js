@@ -59,7 +59,7 @@ module.exports = function(app) {
 
         if (req.user) {
             console.log("HIT API GETSIGN")
-            console.log("Looking up User " + req.user)
+            console.log("Looking up User ", req.user)
             db.User.findOne({
                 where: { email: req.user.email }
             }).then(function(data) {
@@ -79,13 +79,19 @@ module.exports = function(app) {
             userID: req.body.userID
         }).then((horoscope) => {
             res.json(horoscope)
+            console.log(res.json);
         })
+
     })
 
     app.post("/api/favorites", function(req, res) {
+        console.log("in favorites route");
+        console.log('user id: ', req.body.userID);
+        console.log(typeof req.body.userID)
         db.Likes.findAll({
             where: { userID: req.body.userID }
-        }).then((response) => {
+        }).then(function(response) {
+            console.log(response)
             res.json(response)
         })
     })

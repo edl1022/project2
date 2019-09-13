@@ -30,7 +30,7 @@ $(document).ready(function() {
             })
             .then(function(user) {
                 console.log(user)
-                localStorage.setItem('userID', user.id)
+                localStorage.setItem('userID', JSON.stringify(user.id))
                 window.location.replace("/members");
                 // If there's an error, log the error
             })
@@ -39,7 +39,7 @@ $(document).ready(function() {
             });
     }
 
-    function saveHoroscope (horoscope) {
+    function saveHoroscope(horoscope) {
         var userID = localStorage.getItem('userID')
         $.post("/api/horoscope", {
             userID,

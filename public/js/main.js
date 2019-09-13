@@ -2,7 +2,7 @@
 
 $(document).ready(function() {
     console.log(`gettting favorites for user: ${localStorage.getItem('userID')}`)
-    var id = JSON.parse(localStorage.getItem('userID'))
+    var id = JSON.parse(window.localStorage.getItem('userID'))
     console.log(id.toString())
     console.log('33')
     $.ajax({
@@ -11,11 +11,10 @@ $(document).ready(function() {
         data: {
             userID: id.toString()
         }
-    }).then(function(response) {
-        console.log(response)
-        var horoscopes = response.data.horoscopes
-        for (var i = 0; i < horoscopes.length; i++) {
-            makeHoroscopes(horoscopes[i])
+    }).then(function(responses) {
+        console.log(responses)
+        for (var i = 0; i < responses.length; i++) {
+            makeHoroscopes(responses[i].horoscope)
         }
     })
 
@@ -26,7 +25,9 @@ $(document).ready(function() {
             type: "GET",
             url: "/api/getsign"
         }).then(function(data) {
+            console.log(data)
             sign = data.sign.split(" ")
+            console.log(sign)
             sign = sign[0].toLowerCase()
         }).then(function() {
             $.ajax({
@@ -53,7 +54,6 @@ $(document).ready(function() {
             })
         })
     }
-
     $("#heart").on("click", function() {
         console.log("Saving: ", $(".today-horoscope").text())
         saveHoroscope($(".today-horoscope").text())

@@ -88,7 +88,7 @@ module.exports = function(app) {
         console.log("in favorites route");
         console.log('user id: ', req.body.userID);
         console.log(typeof req.body.userID)
-        db.Likes.findOne({
+        db.Likes.findAll({
             where: { userID: req.body.userID }
         }).then(function(response) {
             console.log(response)

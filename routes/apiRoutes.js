@@ -72,8 +72,10 @@ module.exports = function(app) {
         }
     })
 
+    //saves favorited horoscope to database
     app.post("/api/horoscope", function(req, res) {
         console.log('hit route to persist horoscope: ', req.body)
+
         db.Likes.create({
             horoscope: req.body.horoscope,
             userID: req.body.userID
@@ -84,10 +86,12 @@ module.exports = function(app) {
 
     })
 
+
+    //finds all the users favorite 
     app.post("/api/favorites", function(req, res) {
         console.log("in favorites route");
         console.log('user id: ', req.body.userID);
-        console.log(typeof req.body.userID)
+        console.log(typeof(req.body.userID))
         db.Likes.findAll({
             where: { userID: req.body.userID }
         }).then(function(response) {

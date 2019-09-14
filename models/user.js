@@ -37,7 +37,7 @@ module.exports = function(sequelize, DataTypes) {
     });
 
     // User.hasMany(Likes, {as: "horoscope"})
-   
+
 
     return User;
 };

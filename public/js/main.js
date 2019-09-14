@@ -1,10 +1,8 @@
-// import { get } from "https"
-
 $(document).ready(function() {
+    moment().format("DDD DDDD");
     console.log(`gettting favorites for user: ${localStorage.getItem('userID')}`)
     var id = JSON.parse(window.localStorage.getItem('userID'))
     console.log(id.toString())
-    console.log('33')
     $.ajax({
         url: "/api/favorites",
         type: "POST",
@@ -17,7 +15,6 @@ $(document).ready(function() {
             makeHoroscopes(responses[i].horoscope)
         }
     })
-
 
     function horoscope() {
         var sign;
@@ -35,34 +32,59 @@ $(document).ready(function() {
                 //     "Content-Type": "application/json"
                 // },
                 type: "GET",
-                url: "http://sandipbgt.com/theastrologer/api/horoscope/" + sign + "/today/"
+                url: "https://sandipbgt.com/theastrologer/api/horoscope/" + sign + "/today/"
                     // data: console.log(JSON.stringify(data))
             }).then(function(data) {
+                console.log(data)
+                console.log(JSON.parse(data))
+                    //JSON object that holds data returned from API
                 var parseData = JSON.parse(data)
+                    //grabs card holding today's horoscope
                 var horoscopeDisplay = $("#today")
+                    //new div that will append the card on the screen
                 var newDiv = $("<div>")
+                    //paragraph element that will hold today's horoscope
                 var newText = $("<p>")
+                    //paragraph element that will hold today's horoscope
                 var newDate = $("<p>")
-
+                    //paragraph element that holds today's horoscope and displays on screen
+                    //type:object
                 newText.text(parseData.horoscope)
+                console.log(newText.text(parseData.horoscope))
+                console.log(typeof(newText.text(parseData.horoscope)))
+                    //adds a class to newText paragraph element that holds today's horoscope
                 newText.addClass("today-horoscope")
+                    //does the same thing to date
                 newDate.text(parseData.date)
+                    //appends the div with the paragraph that reads today's horoscope
                 newDiv.append(newText)
-                    // newDiv.append(newDate)
+                    //appends the card with the div, which now displays the horoscope on screen
                 horoscopeDisplay.append(newDiv)
 
+                //when the heart button is clicked, run this function 
+                $("#heart").on("click", function() {
+                    var currentTime = moment().dayOfYear(Number);
+                    console.log(currentTime)
+
+                    // console.log(moment().endOf('day'))
+                    // $("#heart").hide();
+                    console.log("Saving: ", $(".today-horoscope").text())
+                        // console.log(moment().endOf('day').fromNow().format('LLL'));
+                        //runs the save horoscope function on today's horoscope that's currently being held in the card
+                    saveHoroscope($(".today-horoscope").text())
+
+                })
             })
         })
     }
-    $("#heart").on("click", function() {
-        console.log("Saving: ", $(".today-horoscope").text())
-        saveHoroscope($(".today-horoscope").text())
 
-    })
+
 
     function saveHoroscope(horoscope) {
+        //grabs userID from localStorage
         var userID = localStorage.getItem('userID')
         console.log('in api call: ', horoscope)
+            //runs a post request to the api/horoscope route
         $.post("/api/horoscope", {
             userID,
             horoscope

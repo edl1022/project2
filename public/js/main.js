@@ -32,7 +32,7 @@ $(document).ready(function() {
                 //     "Content-Type": "application/json"
                 // },
                 type: "GET",
-                url: "https://sandipbgt.com/theastrologer/api/horoscope/" + sign + "/today/"
+                url: "https://cors-anywhere.herokuapp.com/http://sandipbgt.com/theastrologer/api/horoscope/" + sign + "/today/"
                     // data: console.log(JSON.stringify(data))
             }).then(function(data) {
                 console.log(data)

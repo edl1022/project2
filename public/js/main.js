@@ -57,6 +57,7 @@ $(document).ready(function() {
     $("#heart").on("click", function() {
         console.log("Saving: ", $(".today-horoscope").text())
         saveHoroscope($(".today-horoscope").text())
+        $("#heart").hide()
 
     })
 
